@@ -1,10 +1,13 @@
 import { Box, Button, Container } from "@mui/material";
-import { getJWTToken } from "../../services/Api";
-
+import { fetchJSON, login_e, signup_e, } from "../../services/Api";
+import Basic from "../molecules/LoginFormik"
 export default function Login() {
     return (
         <Container>
-            <button onClick={getJWTToken}>Get JWT</button>
+            <button onClick={function(){signup_e("giancarlo.metitieri.01@gmail.com", "123456")}}>signup</button>
+            <button onClick={function(){login_e("giancarlo.metitieri.01@gmail.com", "123456")}}>signin</button>
+            <button onClick={function(){fetchJSON()}}>FETCH JSON</button>
+            <button onClick={function(){localStorage.clear();window.location.reload();}}>DELETE LOCALSTORAGE</button>
         </Container>
     )
 }
