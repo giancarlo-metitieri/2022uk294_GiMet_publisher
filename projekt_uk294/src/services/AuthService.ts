@@ -1,6 +1,5 @@
 class currentUser {
-    constructor(){}
-    
+
     email: string = "";
     jwt: string = "";
 

@@ -1,0 +1,9 @@
+section {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+.Publisher {
+    margin: 10%;
+    border-radius: 1em;
+    background-color: rgb(251, 204, 255);
+}

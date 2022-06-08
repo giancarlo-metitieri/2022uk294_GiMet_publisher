@@ -1,13 +1,15 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import {BASE_URL, login, signup} from "../../services/Api";
+import {Link, useNavigate} from "react-router-dom";
 
 
-export default function Basic() {
-
+export default function Login() {
+    const u = useNavigate()
 
 return (
 <div>
-    <h1>Any place in your app!</h1>
+    <h1>Login</h1>
 
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -27,8 +29,12 @@ return (
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
+            login(values.email, values.password).then(r => {console.log("logged in")})
+
+            alert(JSON.stringify(values, null, 2));
+            u("/product")
+
+            setSubmitting(false);
         }, 400);
       }}
     >
