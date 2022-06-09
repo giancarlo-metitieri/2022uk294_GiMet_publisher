@@ -5,7 +5,7 @@ export default function ObjectEditor() {
     const { id } = useParams();
     return (
         <div>
-            <h2>Now showing post {id}</h2>
+            <h2>Now showing Publisher</h2>
             <DisplayObject/>
         </div>
     );

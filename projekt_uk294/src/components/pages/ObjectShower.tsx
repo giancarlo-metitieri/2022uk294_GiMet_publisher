@@ -8,6 +8,8 @@ import './ObjectShower.css'
 
 import {json} from "stream/consumers";
 import internal from "stream";
+import GoToDetailsButton from "../atoms/GoToDetailsButton";
+import DeleteButton from "../atoms/DeleteButton";
 type publisherType = {
     id: Number
     publisher_name: String
@@ -15,7 +17,6 @@ type publisherType = {
 }
 export default function DisplayObject() {
     let {id} = useParams()
-    let optionalID=Number(id)
     const u = useNavigate()
     const [receivedData, setReceivedData] = useState<publisherType[]>();
     useEffect(function () {
@@ -39,7 +40,13 @@ export default function DisplayObject() {
 
             {receivedData?.map(({id, publisher_name, incorporation_date}) => (
                 <div className={"Publisher"}>
-                    <PublisherComponent id={id} publisher_name={publisher_name} incorporation_date={incorporation_date}/>
+                    <PublisherComponent key={id} id={id} publisher_name={publisher_name} incorporation_date={incorporation_date}/>
+                    <GoToDetailsButton id={id}/>
+
+                    <hr/>
+
+                    <DeleteButton id={id}/>
+
                 </div>
             ))
             }

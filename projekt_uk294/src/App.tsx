@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignUpPage from "./components/pages/SignUp";
 import DisplayObject from "./components/pages/ObjectShower";
 import ObjectEditor from "./components/pages/ObjectEditor";
+import NewProducerObject from "./components/pages/NewProducerObject";
 
 function App() {
   
@@ -13,10 +14,13 @@ function App() {
     <div className="App">
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<DisplayObject/>}/>
                 <Route path="login/" element={<LoginPage/>}/>
+                <Route path="producer/new" element={<NewProducerObject/>}/>
+
                 <Route path="signup/" element={<SignUpPage/>}/>
-                <Route path="producer/" element={<DisplayObject/>}/>
-                <Route path="producer/:id/" element={<ObjectEditor/>} />
+                <Route path="publisher/" element={<DisplayObject/>}/>
+                <Route path="publisher/:id/" element={<ObjectEditor/>} />
             </Routes>
         </BrowserRouter>
     </div>);

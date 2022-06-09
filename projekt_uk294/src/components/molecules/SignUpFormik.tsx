@@ -30,7 +30,6 @@ export default function SignUp() {
                     setTimeout(() => {
                         signup(values.email, values.password).then(r => {console.log("signed up")})
 
-                        alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 400);
                 }}

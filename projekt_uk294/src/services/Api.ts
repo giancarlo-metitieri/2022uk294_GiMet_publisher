@@ -30,7 +30,7 @@ export async function login(email: string, password: string){
     let returnJSON = data.data
     setCurrentUser(returnJSON['user']['email'], returnJSON['accessToken'])
 }
-const config = {
+export const config = {
     headers: { Authorization: `Bearer ` + localStorage.getItem('token') }
 };
 export async function fetchCurrentLoginState(){
@@ -41,3 +41,11 @@ export async function fetchCurrentLoginState(){
 export let isLoggedin = new Promise((resolve, reject) => {
     defaultAxiosInstance.get('publisher', config).then(value => {return resolve(value)}).catch(() => { return reject(null)});
 })
+export async function checkIfIdExists(id: string) {
+    let data = true;
+    if (!(/^\d+$/.test(id))) {
+        return true;
+    }
+    data = await defaultAxiosInstance.get('publisher/' + id, config).then(() => {return true}).catch(() => {return false});
+    return data;
+}

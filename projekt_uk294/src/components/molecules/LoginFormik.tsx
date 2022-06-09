@@ -32,7 +32,7 @@ return (
             login(values.email, values.password).then(r => {console.log("logged in")})
 
             alert(JSON.stringify(values, null, 2));
-            u("/product")
+            u("/producer")
 
             setSubmitting(false);
         }, 400);
