@@ -3,6 +3,7 @@ import { getMaxListeners } from "process";
 import { currentUserObject } from "./AuthService";
 import { setCurrentUser } from "./AuthService"
 import {resolve} from "dns/promises";
+import {useNavigate} from "react-router-dom";
 
 export const BASE_URL: string = "http://localhost:3000"
 
@@ -11,6 +12,13 @@ export const defaultAxiosInstance: AxiosInstance = axios.create(
         baseURL: BASE_URL
     }
 )
+defaultAxiosInstance.interceptors.response.use(function (response) {
+    // Do something with response data
+    return response;
+}, function (error) {
+
+    return Promise.reject(error);
+});
 export async function signup(email: string, password: string){
     const data = await defaultAxiosInstance.post('signup',
     {
@@ -39,7 +47,9 @@ export async function fetchCurrentLoginState(){
     return getCurrentLogin;
 }
 export let isLoggedin = new Promise((resolve, reject) => {
+
     defaultAxiosInstance.get('publisher', config).then(value => {return resolve(value)}).catch(() => { return reject(null)});
+
 })
 export async function checkIfIdExists(id: string) {
     let data = true;

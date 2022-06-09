@@ -30,9 +30,7 @@ return (
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
             login(values.email, values.password).then(r => {console.log("logged in")})
-
-            alert(JSON.stringify(values, null, 2));
-            u("/producer")
+            u("/publisher")
 
             setSubmitting(false);
         }, 400);

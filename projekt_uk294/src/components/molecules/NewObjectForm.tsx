@@ -16,6 +16,7 @@ export default function NewObjectForm() {
                                                           onChange={(e) => {
                                                               checkIfIdExists(e.target.value).then(value => {
                                                                             setSendAvailable(value)
+                                                                            setPubId(e.target.value)
                                                                   }
                                                               )
 
