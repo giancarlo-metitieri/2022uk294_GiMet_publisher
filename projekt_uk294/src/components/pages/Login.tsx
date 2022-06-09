@@ -1,10 +1,15 @@
 import { Box, Button, Container } from "@mui/material";
-import { getJWTToken } from "../../services/Api";
+import LoginForm from "../molecules/LoginFormik";
+import GoToSignupButton from "../atoms/SignUpPageButton";
+import TokenExpiredMessage from "../atoms/TokenExpiredMessage";
 
-export default function Login() {
+export default function LoginPage() {
     return (
         <Container>
-            <button onClick={getJWTToken}>Get JWT</button>
+            <LoginForm/>
+            <br/>
+            <TokenExpiredMessage/>
+            <GoToSignupButton/>
         </Container>
     )
 }
